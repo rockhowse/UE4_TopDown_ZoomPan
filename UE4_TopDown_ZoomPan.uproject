@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.14",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "UE4_TopDown_ZoomPan",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
