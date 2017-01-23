@@ -1,10 +1,11 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 #pragma once
 #include "GameFramework/Character.h"
+#include "GameFramework/SpectatorPawn.h"
 #include "UE4_TopDown_ZoomPanCharacter.generated.h"
 
 UCLASS(Blueprintable)
-class AUE4_TopDown_ZoomPanCharacter : public ACharacter
+class AUE4_TopDown_ZoomPanCharacter : public ASpectatorPawn
 {
 	GENERATED_BODY()
 

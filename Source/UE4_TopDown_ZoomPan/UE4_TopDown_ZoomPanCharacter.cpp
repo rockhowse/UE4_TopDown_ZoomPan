@@ -8,8 +8,6 @@
 
 AUE4_TopDown_ZoomPanCharacter::AUE4_TopDown_ZoomPanCharacter()
 {
-	// Set size for player capsule
-	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
 	// Don't rotate character to camera direction
 	bUseControllerRotationPitch = false;
@@ -17,10 +15,6 @@ AUE4_TopDown_ZoomPanCharacter::AUE4_TopDown_ZoomPanCharacter()
 	bUseControllerRotationRoll = false;
 
 	// Configure character movement
-	GetCharacterMovement()->bOrientRotationToMovement = true; // Rotate character to moving direction
-	GetCharacterMovement()->RotationRate = FRotator(0.f, 640.f, 0.f);
-	GetCharacterMovement()->bConstrainToPlane = true;
-	GetCharacterMovement()->bSnapToPlaneAtStart = true;
 
 	// Create a camera boom...
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
