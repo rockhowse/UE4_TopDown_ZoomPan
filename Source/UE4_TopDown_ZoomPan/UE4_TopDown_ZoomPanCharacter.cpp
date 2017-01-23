@@ -91,3 +91,23 @@ void AUE4_TopDown_ZoomPanCharacter::Tick(float DeltaSeconds)
 		}
 	}
 }
+
+void AUE4_TopDown_ZoomPanCharacter::ChangeCameraArmLength(float changeValue)
+{
+	CameraBoom->TargetArmLength += changeValue * 100.0f; // Change 100.0f with zoom speed property
+}
+
+void AUE4_TopDown_ZoomPanCharacter::RotateCameraArm(FRotator rotation)
+{
+	CameraBoom->AddRelativeRotation(rotation);
+}
+
+void AUE4_TopDown_ZoomPanCharacter::MoveCharacterForward(float changeValue)
+{
+	AddMovementInput(GetActorForwardVector(), changeValue);
+}
+
+void AUE4_TopDown_ZoomPanCharacter::MoveCharacterRight(float changeValue)
+{
+	AddMovementInput(GetActorRightVector(), changeValue);
+}

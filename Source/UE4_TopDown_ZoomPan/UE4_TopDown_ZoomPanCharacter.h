@@ -22,6 +22,12 @@ public:
 	/** Returns CursorToWorld subobject **/
 	FORCEINLINE class UDecalComponent* GetCursorToWorld() { return CursorToWorld; }
 
+	// handlers for camera changes
+	void ChangeCameraArmLength(float changeValue);
+	void RotateCameraArm(FRotator rotation);
+	void MoveCharacterForward(float changeValue);
+	void MoveCharacterRight(float changeValue);
+
 private:
 	/** Top down camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
