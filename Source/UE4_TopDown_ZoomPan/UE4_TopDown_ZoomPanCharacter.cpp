@@ -11,20 +11,35 @@ AUE4_TopDown_ZoomPanCharacter::AUE4_TopDown_ZoomPanCharacter()
 
 	// Don't rotate character to camera direction
 	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
+	bUseControllerRotationYaw = true;
 	bUseControllerRotationRoll = false;
 
-	// Configure character movement
+	// Disable Jump and Crouch actions
+	bAddDefaultMovementBindings = false;
 
 	// Create a camera boom...
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->bAbsoluteRotation = true; // Don't want arm to rotate when character does
+	CameraBoom->bAbsoluteRotation = false; // Rotate arm relative to character
 	CameraBoom->TargetArmLength = 800.f;
 	CameraBoom->RelativeRotation = FRotator(-60.f, 0.f, 0.f);
 	CameraBoom->bDoCollisionTest = false; // Don't want to pull camera in when it collides with level
 
-										  // Create a camera...
+	// Move camera boom with character only on yaw rotation
+	CameraBoom->bUsePawnControlRotation = false;
+	CameraBoom->bInheritPitch = false;
+	CameraBoom->bInheritRoll = false;
+	CameraBoom->bInheritYaw = true;
+
+	// Enables camera lag - matter of taste
+	CameraBoom->bEnableCameraLag = true;
+	CameraBoom->bEnableCameraRotationLag = true;
+
+	// Disable collisions
+	GetCollisionComponent()->bGenerateOverlapEvents = false;
+	GetCollisionComponent()->SetCollisionProfileName("NoCollision");
+
+	// Create a camera...
 	TopDownCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("TopDownCamera"));
 	TopDownCameraComponent->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	TopDownCameraComponent->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
